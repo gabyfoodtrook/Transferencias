@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donde la Gaby - Datos de Transferencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Kalam:wght@400;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -12,140 +15,185 @@
         }
 
         body {
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Fondo estilo textura de madera rústica de carrito / food truck nocturno */
-            background-color: #120a07;
-            background-image: 
-                radial-gradient(circle, #2d1810 10%, transparent 11%),
-                radial-gradient(circle, #1a0e0a 10%, transparent 11%);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
+            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #140b06;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(255,158,0,0.10) 0%, transparent 8%),
+                radial-gradient(circle at 80% 10%, rgba(217,4,41,0.10) 0%, transparent 10%),
+                radial-gradient(circle at 60% 70%, rgba(255,204,0,0.08) 0%, transparent 9%),
+                radial-gradient(circle at 25% 85%, rgba(255,158,0,0.08) 0%, transparent 7%),
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 2px, transparent 2px, transparent 14px);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 24px;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* MARQUESINA / CARTEL DE FOOD TRUCK */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(-45deg, #ffcc00 0px, #ffcc00 16px, #1a1004 16px, #1a1004 32px);
+            z-index: 5;
+            opacity: 0.85;
+        }
+
         .foodtruck-awning {
-            background: linear-gradient(135deg, #d90429 0%, #a5011b 100%);
-            border: 4px solid #ffcc00;
-            border-radius: 12px;
-            padding: 12px 35px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(217, 4, 4, 0.5), inset 0 2px 5px rgba(255,255,255,0.3);
+            background: #b5001f;
+            border: 3px solid #ffcc00;
+            border-radius: 10px;
+            padding: 14px 32px;
+            margin-bottom: 22px;
+            margin-top: 10px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.55);
             text-align: center;
             position: relative;
             z-index: 10;
-            transform: rotate(-1deg);
+            transform: rotate(-1.5deg);
         }
 
         .foodtruck-titulo {
+            font-family: 'Bungee', 'Nunito', sans-serif;
             color: #ffcc00;
-            font-size: 30px;
-            font-weight: 950;
-            text-shadow: 3px 3px 0px #000, -1px -1px 0px #000;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            font-size: 27px;
+            letter-spacing: 0.5px;
+            text-shadow: 3px 3px 0px #6e0012;
         }
 
-        /* CONTENEDOR PRINCIPAL ESTILO COMANDA / CARTEL */
+        .foodtruck-subtitulo {
+            font-family: 'Kalam', cursive;
+            color: #ffe9a8;
+            font-size: 13px;
+            margin-top: 2px;
+            transform: rotate(0.5deg);
+        }
+
+        .vapor-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: -6px;
+        }
+
+        .vapor {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            width: 3px;
+            height: 14px;
+            background: rgba(255,255,255,0.55);
+            border-radius: 3px;
+            animation: subir 2.2s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        .vapor:nth-child(2) { left: 42%; animation-delay: 0.4s; }
+        .vapor:nth-child(3) { left: 58%; animation-delay: 0.8s; }
+
+        @keyframes subir {
+            0%   { transform: translateY(0) scaleX(1); opacity: 0; }
+            25%  { opacity: 0.7; }
+            100% { transform: translateY(-22px) scaleX(1.6); opacity: 0; }
+        }
+
+        /* CONTENEDOR PRINCIPAL: CHAPA METALICA OSCURA, VENTANILLA DEL CARRO DE NOCHE */
         .ramada-container {
-            max-width: 420px;
+            max-width: 400px;
             width: 100%;
-            background: #fffdf5;
-            padding: 28px 22px 22px 22px;
-            border-radius: 20px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.8);
-            border: 6px solid #ffcc00;
+            background:
+                repeating-linear-gradient(100deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 5px),
+                linear-gradient(160deg, #2b2118 0%, #1c150f 100%);
+            padding: 26px 20px 20px 20px;
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,204,0,0.12);
+            border: 4px solid #ffcc00;
             position: relative;
             z-index: 10;
         }
 
-        /* TARJETAS DE DATOS ESTILO TICKET DE PEDIDO */
+        /* TARJETAS DE DATOS: ILUMINADAS COMO SI SE VIERAN DESDE FUERA DEL CARRO */
         .card {
-            background: #ffffff;
-            border: 2px dashed #e6d2b5;
-            border-left: 6px solid #d90429;
-            padding: 10px 14px;
-            margin-bottom: 12px;
-            border-radius: 10px;
+            background: #fffdf7;
+            border: 1px dashed #cbb488;
+            border-left: 5px solid #b5001f;
+            padding: 9px 13px;
+            margin-bottom: 10px;
+            border-radius: 6px;
             text-align: left;
-            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .card:hover {
-            transform: scale(1.02);
-            border-color: #ffcc00;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform: translateX(2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
         .label {
-            font-weight: 800;
-            color: #d90429;
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            color: #b5001f;
             display: block;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
+            font-size: 12px;
+            margin-bottom: 1px;
         }
 
         .valor {
             color: #1a0b01;
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
         }
 
-        /* BOTÓN ESTILO BOTÓN DE LLAMADO A ACCIÓN DE LOCAL DE COMIDA */
         button {
-            background: linear-gradient(135deg, #ffcc00 0%, #ff9e00 100%);
-            color: #120a07;
-            border: 3px solid #d90429;
+            background: #ffcc00;
+            color: #1a0b01;
+            border: 3px solid #1a0b01;
             padding: 15px;
-            font-size: 18px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 17px;
             font-weight: 900;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             width: 100%;
-            margin-top: 10px;
-            box-shadow: 0 6px 15px rgba(255, 204, 0, 0.4);
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-top: 8px;
+            box-shadow: 4px 4px 0px #1a0b01;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
         }
 
         button:hover {
-            background: linear-gradient(135deg, #ffdb4d 0%, #ffcc00 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 22px rgba(255, 204, 0, 0.6);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #1a0b01;
         }
 
         button:active {
-            transform: translateY(1px);
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #1a0b01;
         }
 
-        /* AVISO FLOTANTE CON DISEÑO DE COMPLETO / CARTEL */
         #mensaje-flotante {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #d90429 0%, #900020 100%);
-            border: 5px solid #ffcc00;
+            background: #b5001f;
+            border: 4px solid #ffcc00;
             color: #ffffff;
-            padding: 30px 45px;
-            border-radius: 50px; /* Forma de pan de completo */
-            font-size: 20px;
-            font-weight: 900;
+            padding: 26px 40px;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
             text-align: center;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.85);
             z-index: 1000;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             animation: aparecer 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-width: 90vw;
         }
@@ -157,19 +205,22 @@
 
         .pie-foodtruck {
             text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-            color: #e6b800;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            margin-top: 14px;
+            font-family: 'Kalam', cursive;
+            font-size: 15px;
+            color: #8a6a2b;
+            transform: rotate(-0.5deg);
         }
     </style>
 </head>
 <body>
 
     <div class="foodtruck-awning">
+        <span class="vapor-wrap">
+            <span class="vapor"></span><span class="vapor"></span><span class="vapor"></span>
+        </span>
         <div class="foodtruck-titulo">Donde la Gaby</div>
+        <div class="foodtruck-subtitulo">🚚 datos pa' la transfe 🚚</div>
     </div>
 
     <div class="ramada-container">
@@ -199,10 +250,10 @@
         </div>
 
         <button onclick="copiarDatos()">
-            Copiar Datos ⚡
+            Copiar y al bajón 🌭
         </button>
-        
-        <div class="pie-foodtruck">✨ ¡Los mejores bajones! ✨</div>
+
+        <div class="pie-foodtruck">✨ ¡los mejores bajones! ✨</div>
     </div>
 
     <!-- TARJETA FLOTANTE CON DISEÑO INTEGRAL DE COMPLETO -->
