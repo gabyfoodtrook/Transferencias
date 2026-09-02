@@ -48,8 +48,8 @@ function fallbackCopiarTexto(texto) {
 function mostrarMensaje() {
   const mensaje = document.getElementById('mensaje-flotante');
   if (!mensaje) return;
-  mensaje.classList.add('mostrar');
+  mensaje.style.display = 'flex';
   setTimeout(() => {
-    mensaje.classList.remove('mostrar');
+    mensaje.style.display = 'none';
   }, 2500);
 }
