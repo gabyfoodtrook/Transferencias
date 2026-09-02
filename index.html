@@ -13,7 +13,6 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Fondo más claro y contrastado para que el borde resalte perfecto */
             background-color: #2b1711;
             background-image: 
                 radial-gradient(#4a281e 20%, transparent 21%),
@@ -30,7 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* ENCABEZADO FOODTRUCK */
         .foodtruck-awning {
             text-align: center;
             margin-bottom: 20px;
@@ -47,7 +45,6 @@
             text-transform: uppercase;
         }
 
-        /* CONTENEDOR PRINCIPAL CON BORDE DE PAPAS FRITAS REAL */
         .ramada-container {
             max-width: 420px;
             width: 100%;
@@ -55,9 +52,8 @@
             padding: 30px 20px 25px 20px;
             border-radius: 16px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            /* Borde SVG con la forma exacta y alargada de la papa frita */
             border: 12px solid #e6b800;
-            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='70' viewBox='0 0 36 70'%3E%3Cpath d='M10,4 C14,2 22,2 26,4 C29,15 30,35 28,55 C26,65 20,68 18,66 C15,68 8,65 7,55 C5,35 7,15 10,4 Z' fill='%3E%3E%3E#ffcc00' stroke='%23d49600' stroke-width='2'/%3E%3C/svg%3E") 16 round;
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='70' viewBox='0 0 36 70'%3E%3Cpath d='M10,4 C14,2 22,2 26,4 C29,15 30,35 28,55 C26,65 20,68 18,66 C15,68 8,65 7,55 C5,35 7,15 10,4 Z' fill='%23ffcc00' stroke='%23d49600' stroke-width='2'/%3E%3C/svg%3E") 16 round;
             position: relative;
             z-index: 10;
         }
@@ -123,41 +119,31 @@
             transform: translateY(1px);
         }
 
-        /* MENSAJE FLOTANTE CON COMPLETO AL CENTRO DE LA PANTALLA */
+        /* MENSAJE FLOTANTE ESTILO COMPLETO */
         #mensaje-flotante {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(26, 11, 1, 0.95);
-            border: 3px solid #ffcc00;
+            background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
+            border: 4px solid #ffcc00;
             color: #ffffff;
-            padding: 25px 35px;
-            border-radius: 16px;
+            padding: 30px 40px;
+            border-radius: 40px; /* Forma alargada y redondeada simulando un completo */
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 800;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
             z-index: 1000;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
             animation: aparecer 0.3s ease-out;
-        }
-
-        .completo-icono-flotante {
-            font-size: 45px;
-            display: block;
-            margin-bottom: 8px;
-            animation: saltar 0.5s ease infinite alternate;
+            max-width: 90vw;
         }
 
         @keyframes aparecer {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.8); }
+            from { opacity: 0; transform: translate(-50%, -40%) scale(0.7); }
             to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        }
-
-        @keyframes saltar {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-6px); }
         }
 
         .pie-foodtruck {
@@ -208,10 +194,9 @@
         <div class="pie-foodtruck">✨ ¡Los mejores bajones! ✨</div>
     </div>
 
-    <!-- TARJETA FLOTANTE CON EL COMPLETO AL CENTRO -->
+    <!-- TARJETA FLOTANTE CON FORMA DE COMPLETO -->
     <div id="mensaje-flotante">
-        <span class="completo-icono-flotante">🌭</span>
-        ¡Datos copiados con éxito! 🍟
+        🌭 ¡Datos copiados correctamente! 🌭
     </div>
 
     <script src="script.js"></script>
