@@ -8,13 +8,13 @@ function copiarDatos() {
   const tipoCuenta = tarjetas[3].innerText.trim();
   const nroCuenta = tarjetas[4].innerText.trim();
   const correo = tarjetas[5].innerText.trim();
-  const textoACopiar = 
-    `Titular: ${titular}\n` +
-    `RUT: ${rut}\n` +
-    `Banco: ${banco}\n` +
-    `Tipo de Cuenta: ${tipoCuenta}\n` +
-    `Nro de Cuenta: ${nroCuenta}\n` +
-    `Correo: ${correo}`;
+  const textoACopiar =
+    `${titular}\n` +
+    `${rut}\n` +
+    `${banco}\n` +
+    `${tipoCuenta}\n` +
+    `${nroCuenta}\n` +
+    `${correo}`;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(textoACopiar).then(() => {
       mostrarMensaje();
