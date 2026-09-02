@@ -12,13 +12,14 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #2b1711;
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Fondo estilo textura de madera rústica de carrito / food truck nocturno */
+            background-color: #120a07;
             background-image: 
-                radial-gradient(#4a281e 20%, transparent 21%),
-                radial-gradient(#4a281e 20%, transparent 21%);
-            background-size: 50px 50px;
-            background-position: 0 0, 25px 25px;
+                radial-gradient(circle, #2d1810 10%, transparent 11%),
+                radial-gradient(circle, #1a0e0a 10%, transparent 11%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -29,129 +30,139 @@
             overflow-x: hidden;
         }
 
+        /* MARQUESINA / CARTEL DE FOOD TRUCK */
         .foodtruck-awning {
+            background: linear-gradient(135deg, #d90429 0%, #a5011b 100%);
+            border: 4px solid #ffcc00;
+            border-radius: 12px;
+            padding: 12px 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(217, 4, 4, 0.5), inset 0 2px 5px rgba(255,255,255,0.3);
             text-align: center;
-            margin-bottom: 20px;
             position: relative;
             z-index: 10;
+            transform: rotate(-1deg);
         }
 
         .foodtruck-titulo {
             color: #ffcc00;
-            font-size: 32px;
-            font-weight: 900;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
-            letter-spacing: 1px;
+            font-size: 30px;
+            font-weight: 950;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0px #000;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
+        /* CONTENEDOR PRINCIPAL ESTILO COMANDA / CARTEL */
         .ramada-container {
             max-width: 420px;
             width: 100%;
-            background: #fffdf9;
-            padding: 30px 20px 25px 20px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            border: 12px solid #e6b800;
-            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='70' viewBox='0 0 36 70'%3E%3Cpath d='M10,4 C14,2 22,2 26,4 C29,15 30,35 28,55 C26,65 20,68 18,66 C15,68 8,65 7,55 C5,35 7,15 10,4 Z' fill='%23ffcc00' stroke='%23d49600' stroke-width='2'/%3E%3C/svg%3E") 16 round;
+            background: #fffdf5;
+            padding: 28px 22px 22px 22px;
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.8);
+            border: 6px solid #ffcc00;
             position: relative;
             z-index: 10;
         }
 
+        /* TARJETAS DE DATOS ESTILO TICKET DE PEDIDO */
         .card {
             background: #ffffff;
-            border: 1px solid #e2d7c5;
-            border-left: 4px solid #ffcc00;
+            border: 2px dashed #e6d2b5;
+            border-left: 6px solid #d90429;
             padding: 10px 14px;
-            margin-bottom: 10px;
-            border-radius: 8px;
+            margin-bottom: 12px;
+            border-radius: 10px;
             text-align: left;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s ease;
         }
 
         .card:hover {
-            transform: translateX(3px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            transform: scale(1.02);
+            border-color: #ffcc00;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .label {
-            font-weight: 700;
+            font-weight: 800;
             color: #d90429;
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin-bottom: 2px;
         }
 
         .valor {
-            color: #222222;
+            color: #1a0b01;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
+        /* BOTÓN ESTILO BOTÓN DE LLAMADO A ACCIÓN DE LOCAL DE COMIDA */
         button {
-            background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
-            color: #1a0b01;
-            border: none;
-            padding: 14px;
-            font-size: 17px;
-            font-weight: 800;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #ffcc00 0%, #ff9e00 100%);
+            color: #120a07;
+            border: 3px solid #d90429;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 12px;
             cursor: pointer;
             width: 100%;
-            margin-top: 15px;
-            box-shadow: 0 5px 12px rgba(255, 204, 0, 0.3);
+            margin-top: 10px;
+            box-shadow: 0 6px 15px rgba(255, 204, 0, 0.4);
             transition: all 0.2s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         button:hover {
             background: linear-gradient(135deg, #ffdb4d 0%, #ffcc00 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 7px 15px rgba(255, 204, 0, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(255, 204, 0, 0.6);
         }
 
         button:active {
             transform: translateY(1px);
         }
 
-        /* MENSAJE FLOTANTE ESTILO COMPLETO */
+        /* AVISO FLOTANTE CON DISEÑO DE COMPLETO / CARTEL */
         #mensaje-flotante {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
-            border: 4px solid #ffcc00;
+            background: linear-gradient(135deg, #d90429 0%, #900020 100%);
+            border: 5px solid #ffcc00;
             color: #ffffff;
-            padding: 30px 40px;
-            border-radius: 40px; /* Forma alargada y redondeada simulando un completo */
-            font-size: 18px;
-            font-weight: 800;
+            padding: 30px 45px;
+            border-radius: 50px; /* Forma de pan de completo */
+            font-size: 20px;
+            font-weight: 900;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9);
             z-index: 1000;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-            animation: aparecer 0.3s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: aparecer 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-width: 90vw;
         }
 
         @keyframes aparecer {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.7); }
+            from { opacity: 0; transform: translate(-50%, -40%) scale(0.6); }
             to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
         .pie-foodtruck {
             text-align: center;
             margin-top: 15px;
-            font-size: 13px;
-            color: #8c5d33;
-            font-weight: 700;
+            font-size: 14px;
+            color: #e6b800;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -188,13 +199,13 @@
         </div>
 
         <button onclick="copiarDatos()">
-            <span>Copiar Datos</span> 🌭🍟🥤
+            Copiar Datos ⚡
         </button>
         
         <div class="pie-foodtruck">✨ ¡Los mejores bajones! ✨</div>
     </div>
 
-    <!-- TARJETA FLOTANTE CON FORMA DE COMPLETO -->
+    <!-- TARJETA FLOTANTE CON DISEÑO INTEGRAL DE COMPLETO -->
     <div id="mensaje-flotante">
         🌭 ¡Datos copiados correctamente! 🌭
     </div>
