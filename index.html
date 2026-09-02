@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de Transferencia - Foodtruck</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .ramada-container {
+            max-width: 420px;
+            width: 100%;
+            background: #fdfaf5;
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-top: 6px solid #0039a6;
+            border-left: 6px solid #0039a6;
+            border-right: 6px solid #d52b1e;
+            border-bottom: 6px solid #d52b1e;
+            position: relative;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2d7c5;
+            border-left: 4px solid #0039a6;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateX(3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        .label {
+            font-weight: 700;
+            color: #8c2a2a;
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .valor {
+            color: #222222;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        button {
+            background: linear-gradient(135deg, #d52b1e 0%, #b01b10 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 5px 12px rgba(213, 43, 30, 0.4);
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #e63528 0%, #c42014 100%);
+            transform: translateY(-2px);
+        }
+
+        #mensaje-flotante {
+            display: none;
+            background-color: #1b7e36;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ramada-container">
+        <div class="card">
+            <span class="label">Titular</span>
+            <div class="valor">Gabriela Yévenes</div>
+        </div>
+        <div class="card">
+            <span class="label">RUT</span>
+            <div class="valor">16.873.861-7</div>
+        </div>
+        <div class="card">
+            <span class="label">Banco</span>
+            <div class="valor">Mercado Pago</div>
+        </div>
+        <div class="card">
+            <span class="label">Tipo de Cuenta</span>
+            <div class="valor">Cuenta Vista</div>
+        </div>
+        <div class="card">
+            <span class="label">Nro de Cuenta</span>
+            <div class="valor">1086877388</div>
+        </div>
+        <div class="card">
+            <span class="label">Correo</span>
+            <div class="valor">gabyfoodtrook@gmail.com</div>
+        </div>
+
+        <button onclick="copiarDatos()">Copiar Datos</button>
+        
+        <div id="mensaje-flotante">¡Datos copiados con éxito!</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
