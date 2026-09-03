@@ -73,7 +73,6 @@
             color: #ffe9a8;
             font-size: 22px;
             font-weight: 700;
-            /* Original era -2px, subido a 0px para bajarlo 2px */
             margin-top: 0px;
             transform: rotate(0.5deg);
             text-shadow: 1px 1px 0px #6e0012;
@@ -162,9 +161,11 @@
             color: #1a0b01;
             border: 3px solid #1a0b01;
             padding: 12px;
-            font-family: 'Nunito', sans-serif;
-            font-size: 16px;
-            font-weight: 900;
+            /* Cambiada la tipografía a Bungee para darle un estilo estilo arcade/destacado */
+            font-family: 'Bungee', 'Nunito', sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            font-weight: 400;
             border-radius: 10px;
             cursor: pointer;
             width: 100%;
@@ -328,8 +329,8 @@
 
         .pie-foodtruck {
             text-align: center;
-            /* Original era 12px, subido a 14px para bajarlo 2px */
-            margin-top: 14px;
+            /* Corregido: se pegó más a la tarjeta de transferencia (margen superior más corto) para evitar que quede flotando separado */
+            margin-top: 4px;
             font-family: 'Kalam', cursive;
             font-size: 26px;
             font-weight: 700;
@@ -385,4 +386,93 @@
     </div>
 
     <div id="mensaje-flotante">
-        <div class="fl
+        <div class="flotante-animacion">
+            <div class="flotante-wrapper">
+                <div class="bocadillo">
+                    ¡Datos copiados exitosamente!
+                    <span class="mini-burbuja-1"></span>
+                    <span class="mini-burbuja-2"></span>
+                </div>
+                <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
+            </div>
+        </div>
+    </div>
+
+        <script>
+        function copiarDatos() {
+            const tarjetas = document.querySelectorAll('.valor');
+            if (tarjetas.length === 0) return;
+            const titular = tarjetas[0].innerText.trim();
+            const rut = tarjetas[1].innerText.trim();
+            const banco = tarjetas[2].innerText.trim();
+            const tipoCuenta = tarjetas[3].innerText.trim();
+            const nroCuenta = tarjetas[4].innerText.replace(/-/g, '').trim();
+            const correo = tarjetas[5].innerText.trim();
+            const textoACopiar = 
+                titular + '
+' +
+                rut + '
+' +
+                banco + '
+' +
+                tipoCuenta + '
+' +
+                nroCuenta + '
+' +
+                correo;
+
+            // Método universal compatible con celulares y PC
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textoACopiar).then(() => {
+                    mostrarMensaje();
+                }).catch(() => {
+                    ejecutarFallback(textoACopiar);
+                });
+            } else {
+                ejecutarFallback(textoACopiar);
+            }
+        }
+
+        function ejecutarFallback(texto) {
+            const textArea = document.createElement("textarea");
+            textArea.value = texto;
+            // Asegurar que esté fuera de la pantalla pero accesible
+            textArea.style.position = "fixed";
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const exitoso = document.execCommand('copy');
+                if (exitoso) {
+                    mostrarMensaje();
+                } else {
+                    alert("No se pudo copiar automáticamente. Intenta seleccionarlo manualmente.");
+                }
+            } catch (err) {
+                console.error('Error al intentar copiar', err);
+                alert("Error al copiar los datos.");
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        function mostrarMensaje() {
+            const overlay = document.getElementById('overlay-blur');
+            const mensaje = document.getElementById('mensaje-flotante');
+            if (!overlay || !mensaje) return;
+            
+            overlay.style.display = 'block';
+            mensaje.style.display = 'block';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                mensaje.style.display = 'none';
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
