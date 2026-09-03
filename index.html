@@ -175,7 +175,20 @@
             box-shadow: 1px 1px 0px #1a0b01;
         }
 
-        /* MENSAJE FLOTANTE ADAPTADO AL NUEVO HOTDOG CON LENTES */
+        /* CAPA NUBLADA / OSCURECIDA DE FONDO (OVERLAY) */
+        #overlay-blur {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 5, 2, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+        }
+
+        /* MENSAJE FLOTANTE CON EL NUEVO HOTDOG SIN FONDO */
         #mensaje-flotante {
             display: none;
             position: fixed;
@@ -195,13 +208,14 @@
         .completo-flotante-img {
             width: 230px;
             height: auto;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.85));
+            display: block;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
         }
 
         .bocadillo {
             position: absolute;
-            top: 30px;
-            left: -145px;
+            top: 42px; /* Ajustado exactamente a la altura de la boca del hotdog */
+            left: -175px; /* Ajustado para que la nube salga justo hacia la izquierda de su cara */
             background: #fffdf7;
             color: #1a0b01;
             padding: 8px 12px;
@@ -245,7 +259,9 @@
 </head>
 <body>
 
-    <!-- CAJA DEL TÍTULO RESTAURADA -->
+    <!-- CAPA NUBLADA ATRÁS -->
+    <div id="overlay-blur"></div>
+
     <div class="foodtruck-awning">
         <span class="vapor-wrap">
             <span class="vapor"></span><span class="vapor"></span><span class="vapor"></span>
@@ -287,11 +303,12 @@
         <div class="pie-foodtruck">✨ ¡los mejores bajones! ✨</div>
     </div>
 
-    <!-- MENSAJE FLOTANTE CON EL NUEVO HOTDOG -->
+    <!-- MENSAJE FLOTANTE -->
     <div id="mensaje-flotante">
         <div class="flotante-wrapper">
             <div class="bocadillo">¡Datos copiados exitosamente!</div>
-            <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
+            <!-- Asegúrate de que el archivo se llame hotdog.jpg o cambia la extensión aquí si es .png -->
+            <img src="hotdog.jpg" alt="Completo con lentes" class="completo-flotante-img">
         </div>
     </div>
 
@@ -343,10 +360,15 @@
         }
 
         function mostrarMensaje() {
+            const overlay = document.getElementById('overlay-blur');
             const mensaje = document.getElementById('mensaje-flotante');
-            if (!mensaje) return;
+            if (!overlay || !mensaje) return;
+            
+            overlay.style.display = 'block';
             mensaje.style.display = 'block';
+            
             setTimeout(() => {
+                overlay.style.display = 'none';
                 mensaje.style.display = 'none';
             }, 2500);
         }
