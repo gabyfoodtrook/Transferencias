@@ -193,7 +193,7 @@
             z-index: 999;
         }
 
-        /* MENSAJE FLOTANTE ADAPTADO A MÓVILES (CENTRADO PERFECTO) */
+        /* MENSAJE FLOTANTE */
         #mensaje-flotante {
             display: none;
             position: fixed;
@@ -204,7 +204,8 @@
             width: 90%;
             max-width: 320px;
             text-align: center;
-            animation: aparecer 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            /* Animación de entrada explosiva / rebote fuerte */
+            animation: explotar 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.45) forwards;
         }
 
         .flotante-animacion {
@@ -228,11 +229,11 @@
             max-width: 50vw;
             height: auto;
             display: block;
-            margin: 40px auto 0 auto;
+            margin: 45px auto 0 auto;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
         }
 
-        /* NUBE POSICIONADA ARRIBA DE LA IMAGEN PARA EVITAR CORTES LATERALES */
+        /* NUBE CON 4 MINI BURBUJAS EN TOTAL HACIA ABAJO */
         .bocadillo {
             position: absolute;
             top: -15px;
@@ -251,6 +252,7 @@
             z-index: 10;
         }
 
+        /* Burbuja 1 (Mediana) */
         .bocadillo::before {
             content: '';
             position: absolute;
@@ -264,22 +266,65 @@
             border-radius: 50%;
         }
 
+        /* Burbuja 2 (Pequeña) */
         .bocadillo::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -16px;
             left: 50%;
             transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             background: #fffdf7;
             border: 2px solid #1a0b01;
             border-radius: 50%;
         }
 
-        @keyframes aparecer {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.6); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        /* Burbuja 3 (Más chica - Agregada) */
+        .bocadillo .mini-burbuja-1 {
+            content: '';
+            position: absolute;
+            bottom: -22px;
+            left: 48%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #fffdf7;
+            border: 2px solid #1a0b01;
+            border-radius: 50%;
+        }
+
+        /* Burbuja 4 (La más chiquita pegada al completo - Agregada) */
+        .bocadillo .mini-burbuja-2 {
+            content: '';
+            position: absolute;
+            bottom: -27px;
+            left: 46%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 3px;
+            background: #fffdf7;
+            border: 1.5px solid #1a0b01;
+            border-radius: 50%;
+        }
+
+        /* ANIMACIÓN DE APARICIÓN TIPO "EXPLOSIÓN / REBOTE" */
+        @keyframes explotar {
+            0% { 
+                opacity: 0; 
+                transform: translate(-50%, -50%) scale(0.2); 
+            }
+            60% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1.15); /* Se pasa de largo para dar efecto elástico */
+            }
+            80% { 
+                transform: translate(-50%, -50%) scale(0.95); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translate(-50%, -50%) scale(1); 
+            }
         }
 
         .pie-foodtruck {
@@ -340,7 +385,11 @@
     <div id="mensaje-flotante">
         <div class="flotante-animacion">
             <div class="flotante-wrapper">
-                <div class="bocadillo">¡Datos copiados exitosamente!</div>
+                <div class="bocadillo">
+                    ¡Datos copiados exitosamente!
+                    <span class="mini-burbuja-1"></span>
+                    <span class="mini-burbuja-2"></span>
+                </div>
                 <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
             </div>
         </div>
