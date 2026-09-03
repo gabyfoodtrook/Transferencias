@@ -50,7 +50,7 @@
             background: #b5001f;
             border: 3px solid #ffcc00;
             border-radius: 10px;
-            padding: 8px 32px;
+            padding: 10px 32px;
             margin-bottom: 15px;
             margin-top: 10px;
             box-shadow: 0 10px 28px rgba(0,0,0,0.55);
@@ -68,12 +68,15 @@
             text-shadow: 3px 3px 0px #6e0012;
         }
 
+        /* Subtítulo superior agrandado al doble aprox. (de 12px a 22px) */
         .foodtruck-subtitulo {
             font-family: 'Kalam', cursive;
             color: #ffe9a8;
-            font-size: 12px;
+            font-size: 22px;
+            font-weight: 700;
             margin-top: -2px;
             transform: rotate(0.5deg);
+            text-shadow: 1px 1px 0px #6e0012;
         }
 
         .vapor-wrap {
@@ -202,10 +205,10 @@
             transform: translate(-50%, -50%);
             z-index: 1000;
             width: 90%;
-            max-width: 320px;
+            max-width: 380px;
             text-align: center;
-            /* Animación ultra exagerada */
-            animation: explotarExtremo 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.65) forwards;
+            /* Animación elástica híper exagerada */
+            animation: explotarMaximo 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.75) forwards;
         }
 
         .flotante-animacion {
@@ -224,16 +227,16 @@
             50% { transform: translateY(-8px) rotate(1deg); }
         }
 
+        /* Imagen del completo más grande (de 160px a 230px) */
         .completo-flotante-img {
-            width: 160px;
-            max-width: 50vw;
+            width: 230px;
+            max-width: 70vw;
             height: auto;
             display: block;
             margin: 45px auto 0 auto;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
         }
 
-        /* NUBE CON 4 MINI BURBUJAS HACIA ABAJO */
         .bocadillo {
             position: absolute;
             top: -15px;
@@ -241,11 +244,11 @@
             transform: translateX(-50%);
             background: #fffdf7;
             color: #1a0b01;
-            padding: 10px 16px;
+            padding: 12px 20px;
             border-radius: 50px;
             border: 3px solid #1a0b01;
             font-family: 'Nunito', sans-serif;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 900;
             white-space: nowrap;
             box-shadow: 3px 3px 0px #1a0b01;
@@ -304,34 +307,37 @@
             border-radius: 50%;
         }
 
-        /* ANIMACIÓN ULTRA EXAGERADA (EXPLOSIÓN Y REBOTE GIGANTE) */
-        @keyframes explotarExtremo {
+        /* ANIMACIÓN HÍPER EXAGERADA (EXPLOSIÓN Y REBOTE GIGANTE) */
+        @keyframes explotarMaximo {
             0% { 
                 opacity: 0; 
-                transform: translate(-50%, -50%) scale(0.05); 
+                transform: translate(-50%, -50%) scale(0.01); 
             }
-            40% { 
+            45% { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1.45); /* ¡Se infla gigante! */
+                transform: translate(-50%, -50%) scale(1.6); /* ¡Se infla brutalmente grande! */
             }
             70% { 
-                transform: translate(-50%, -50%) scale(0.85); /* Se achica de golpe */
+                transform: translate(-50%, -50%) scale(0.75); /* Se encoge fuerte */
             }
             85% { 
-                transform: translate(-50%, -50%) scale(1.1); /* Rebota un poco hacia arriba */
+                transform: translate(-50%, -50%) scale(1.15); /* Rebota otra vez */
             }
             100% { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1); /* Queda en su tamaño real */
+                transform: translate(-50%, -50%) scale(1); /* Se acomoda en su tamaño final */
             }
         }
 
+        /* Pie de página agrandado al doble (de 14px a 26px) */
         .pie-foodtruck {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 12px;
             font-family: 'Kalam', cursive;
-            font-size: 14px;
-            color: #8a6a2b;
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffcc00;
+            text-shadow: 2px 2px 0px #6e0012;
             transform: rotate(-0.5deg);
         }
     </style>
@@ -345,7 +351,7 @@
             <span class="vapor"></span><span class="vapor"></span><span class="vapor"></span>
         </span>
         <div class="foodtruck-titulo">Donde la Gaby</div>
-        <div class="foodtruck-subtitulo">🚚 datos pa' la transfe 🚚</div>
+        <div class="foodtruck-subtitulo">datos pa' la transfe 💸</div>
     </div>
 
     <div class="ramada-container">
@@ -456,4 +462,5 @@
         }
     </script>
 </body>
+</html>
 </html>
