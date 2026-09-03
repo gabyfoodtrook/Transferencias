@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     <title>Donde la Gaby - Datos de Transferencia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +176,7 @@
             box-shadow: 1px 1px 0px #1a0b01;
         }
 
-        /* CAPA NUBLADA / OSCURECIDA DE FONDO (OVERLAY) */
+        /* CAPA NUBLADA / OSCURECIDA DE FONDO */
         #overlay-blur {
             display: none;
             position: fixed;
@@ -188,21 +189,30 @@
             z-index: 999;
         }
 
-        /* MENSAJE FLOTANTE CON EL NUEVO HOTDOG SIN FONDO */
+        /* MENSAJE FLOTANTE */
         #mensaje-flotante {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-70%, -50%);
+            transform: translate(-90%, -50%);
             z-index: 1000;
-            animation: aparecer 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: aparecer 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .flotante-animacion {
+            animation: flotar 2.5s ease-in-out infinite;
         }
 
         .flotante-wrapper {
             position: relative;
             display: inline-block;
             text-align: center;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
         }
 
         .completo-flotante-img {
@@ -212,14 +222,15 @@
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
         }
 
+        /* NUBE HACIA LA DERECHA CON FORMA ORGÁNICA Y BURBUJAS */
         .bocadillo {
             position: absolute;
-            top: 42px; /* Ajustado exactamente a la altura de la boca del hotdog */
-            left: 170px; /* Ajustado para que la nube salga justo hacia la izquierda de su cara */
+            top: 35px;
+            left: 175px;
             background: #fffdf7;
             color: #1a0b01;
-            padding: 8px 12px;
-            border-radius: 12px;
+            padding: 10px 16px;
+            border-radius: 50px;
             border: 3px solid #1a0b01;
             font-family: 'Nunito', sans-serif;
             font-size: 13px;
@@ -229,22 +240,33 @@
             z-index: 10;
         }
 
+        .bocadillo::before {
+            content: '';
+            position: absolute;
+            top: 55%;
+            left: -8px;
+            width: 10px;
+            height: 10px;
+            background: #fffdf7;
+            border: 3px solid #1a0b01;
+            border-radius: 50%;
+        }
+
         .bocadillo::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: -9px;
-            transform: translateY(-50%);
-            border-width: 6px 0 6px 9px;
-            border-style: solid;
-            border-color: transparent transparent transparent #1a0b01;
-            display: block;
-            width: 0;
+            top: 75%;
+            left: -15px;
+            width: 6px;
+            height: 6px;
+            background: #fffdf7;
+            border: 2px solid #1a0b01;
+            border-radius: 50%;
         }
 
         @keyframes aparecer {
-            from { opacity: 0; transform: translate(-50%, -40%) scale(0.6); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            from { opacity: 0; transform: scale(0.6); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .pie-foodtruck {
@@ -259,7 +281,6 @@
 </head>
 <body>
 
-    <!-- CAPA NUBLADA ATRÁS -->
     <div id="overlay-blur"></div>
 
     <div class="foodtruck-awning">
@@ -287,7 +308,7 @@
             <span class="label">Tipo de Cuenta</span>
             <div class="valor">Cuenta Vista</div>
         </div>
-       <div class="card">
+        <div class="card">
             <span class="label">Nro de Cuenta</span>
             <div class="valor" x-ms-format-detection="none">1086877388</div>
         </div>
@@ -303,12 +324,12 @@
         <div class="pie-foodtruck">✨ ¡los mejores bajones! ✨</div>
     </div>
 
-    <!-- MENSAJE FLOTANTE -->
     <div id="mensaje-flotante">
-        <div class="flotante-wrapper">
-            <div class="bocadillo">¡Datos copiados exitosamente!</div>
-            <!-- Asegúrate de que el archivo se llame hotdog.jpg o cambia la extensión aquí si es .png -->
-            <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
+        <div class="flotante-animacion">
+            <div class="flotante-wrapper">
+                <div class="bocadillo">¡Datos copiados exitosamente!</div>
+                <img src="hotdog.jpg" alt="Completo con lentes" class="completo-flotante-img">
+            </div>
         </div>
     </div>
 
