@@ -68,13 +68,13 @@
             text-shadow: 3px 3px 0px #6e0012;
         }
 
-        /* Subtítulo superior agrandado al doble aprox. (de 12px a 22px) */
         .foodtruck-subtitulo {
             font-family: 'Kalam', cursive;
             color: #ffe9a8;
             font-size: 22px;
             font-weight: 700;
-            margin-top: -2px;
+            /* Original era -2px, subido a 0px para bajarlo 2px */
+            margin-top: 0px;
             transform: rotate(0.5deg);
             text-shadow: 1px 1px 0px #6e0012;
         }
@@ -207,7 +207,6 @@
             width: 90%;
             max-width: 380px;
             text-align: center;
-            /* Animación elástica híper exagerada */
             animation: explotarMaximo 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.75) forwards;
         }
 
@@ -227,7 +226,6 @@
             50% { transform: translateY(-8px) rotate(1deg); }
         }
 
-        /* Imagen del completo más grande (de 160px a 230px) */
         .completo-flotante-img {
             width: 230px;
             max-width: 70vw;
@@ -307,7 +305,6 @@
             border-radius: 50%;
         }
 
-        /* ANIMACIÓN HÍPER EXAGERADA (EXPLOSIÓN Y REBOTE GIGANTE) */
         @keyframes explotarMaximo {
             0% { 
                 opacity: 0; 
@@ -315,24 +312,24 @@
             }
             45% { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1.6); /* ¡Se infla brutalmente grande! */
+                transform: translate(-50%, -50%) scale(1.6); 
             }
             70% { 
-                transform: translate(-50%, -50%) scale(0.75); /* Se encoge fuerte */
+                transform: translate(-50%, -50%) scale(0.75); 
             }
             85% { 
-                transform: translate(-50%, -50%) scale(1.15); /* Rebota otra vez */
+                transform: translate(-50%, -50%) scale(1.15); 
             }
             100% { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1); /* Se acomoda en su tamaño final */
+                transform: translate(-50%, -50%) scale(1); 
             }
         }
 
-        /* Pie de página agrandado al doble (de 14px a 26px) */
         .pie-foodtruck {
             text-align: center;
-            margin-top: 12px;
+            /* Original era 12px, subido a 14px para bajarlo 2px */
+            margin-top: 14px;
             font-family: 'Kalam', cursive;
             font-size: 26px;
             font-weight: 700;
@@ -388,79 +385,4 @@
     </div>
 
     <div id="mensaje-flotante">
-        <div class="flotante-animacion">
-            <div class="flotante-wrapper">
-                <div class="bocadillo">
-                    ¡Datos copiados exitosamente!
-                    <span class="mini-burbuja-1"></span>
-                    <span class="mini-burbuja-2"></span>
-                </div>
-                <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function copiarDatos() {
-            const tarjetas = document.querySelectorAll('.valor');
-            if (tarjetas.length === 0) return;
-            const titular = tarjetas[0].innerText.trim();
-            const rut = tarjetas[1].innerText.trim();
-            const banco = tarjetas[2].innerText.trim();
-            const tipoCuenta = tarjetas[3].innerText.trim();
-            const nroCuenta = tarjetas[4].innerText.replace(/-/g, '').trim();
-            const correo = tarjetas[5].innerText.trim();
-            const textoACopiar =
-                `${titular}\n` +
-                `${rut}\n` +
-                `${banco}\n` +
-                `${tipoCuenta}\n` +
-                `${nroCuenta}\n` +
-                `${correo}`;
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(textoACopiar).then(() => {
-                    mostrarMensaje();
-                }).catch(err => {
-                    fallbackCopiarTexto(textoACopiar);
-                });
-            } else {
-                fallbackCopiarTexto(textoACopiar);
-            }
-        }
-
-        function fallbackCopiarTexto(texto) {
-            const textarea = document.createElement('textarea');
-            textarea.value = texto;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            try {
-                const success = document.execCommand('copy');
-                if (success) {
-                    mostrarMensaje();
-                }
-            } catch (err) {
-                console.error('Error al copiar', err);
-            }
-            document.body.removeChild(textarea);
-        }
-
-        function mostrarMensaje() {
-            const overlay = document.getElementById('overlay-blur');
-            const mensaje = document.getElementById('mensaje-flotante');
-            if (!overlay || !mensaje) return;
-            
-            overlay.style.display = 'block';
-            mensaje.style.display = 'block';
-            
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                mensaje.style.display = 'none';
-            }, 2500);
-        }
-    </script>
-</body>
-</html>
-</html>
+        <div class="fl
