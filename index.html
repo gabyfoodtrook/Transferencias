@@ -204,8 +204,8 @@
             width: 90%;
             max-width: 320px;
             text-align: center;
-            /* Animación de entrada explosiva / rebote fuerte */
-            animation: explotar 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.45) forwards;
+            /* Animación ultra exagerada */
+            animation: explotarExtremo 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.65) forwards;
         }
 
         .flotante-animacion {
@@ -233,7 +233,7 @@
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.9));
         }
 
-        /* NUBE CON 4 MINI BURBUJAS EN TOTAL HACIA ABAJO */
+        /* NUBE CON 4 MINI BURBUJAS HACIA ABAJO */
         .bocadillo {
             position: absolute;
             top: -15px;
@@ -252,7 +252,6 @@
             z-index: 10;
         }
 
-        /* Burbuja 1 (Mediana) */
         .bocadillo::before {
             content: '';
             position: absolute;
@@ -266,7 +265,6 @@
             border-radius: 50%;
         }
 
-        /* Burbuja 2 (Pequeña) */
         .bocadillo::after {
             content: '';
             position: absolute;
@@ -280,7 +278,6 @@
             border-radius: 50%;
         }
 
-        /* Burbuja 3 (Más chica - Agregada) */
         .bocadillo .mini-burbuja-1 {
             content: '';
             position: absolute;
@@ -294,7 +291,6 @@
             border-radius: 50%;
         }
 
-        /* Burbuja 4 (La más chiquita pegada al completo - Agregada) */
         .bocadillo .mini-burbuja-2 {
             content: '';
             position: absolute;
@@ -308,22 +304,25 @@
             border-radius: 50%;
         }
 
-        /* ANIMACIÓN DE APARICIÓN TIPO "EXPLOSIÓN / REBOTE" */
-        @keyframes explotar {
+        /* ANIMACIÓN ULTRA EXAGERADA (EXPLOSIÓN Y REBOTE GIGANTE) */
+        @keyframes explotarExtremo {
             0% { 
                 opacity: 0; 
-                transform: translate(-50%, -50%) scale(0.2); 
+                transform: translate(-50%, -50%) scale(0.05); 
             }
-            60% { 
+            40% { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1.15); /* Se pasa de largo para dar efecto elástico */
+                transform: translate(-50%, -50%) scale(1.45); /* ¡Se infla gigante! */
             }
-            80% { 
-                transform: translate(-50%, -50%) scale(0.95); 
+            70% { 
+                transform: translate(-50%, -50%) scale(0.85); /* Se achica de golpe */
+            }
+            85% { 
+                transform: translate(-50%, -50%) scale(1.1); /* Rebota un poco hacia arriba */
             }
             100% { 
                 opacity: 1; 
-                transform: translate(-50%, -50%) scale(1); 
+                transform: translate(-50%, -50%) scale(1); /* Queda en su tamaño real */
             }
         }
 
