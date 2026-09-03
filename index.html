@@ -49,8 +49,8 @@
             background: #b5001f;
             border: 3px solid #ffcc00;
             border-radius: 10px;
-            padding: 10px 32px;
-            margin-bottom: 22px;
+            padding: 8px 32px;
+            margin-bottom: 15px;
             margin-top: 10px;
             box-shadow: 0 10px 28px rgba(0,0,0,0.55);
             text-align: center;
@@ -62,7 +62,7 @@
         .foodtruck-titulo {
             font-family: 'Bungee', 'Nunito', sans-serif;
             color: #ffcc00;
-            font-size: 27px;
+            font-size: 25px;
             letter-spacing: 0.5px;
             text-shadow: 3px 3px 0px #6e0012;
         }
@@ -70,8 +70,8 @@
         .foodtruck-subtitulo {
             font-family: 'Kalam', cursive;
             color: #ffe9a8;
-            font-size: 13px;
-            margin-top: 2px;
+            font-size: 12px;
+            margin-top: -2px;
             transform: rotate(0.5deg);
         }
 
@@ -102,14 +102,13 @@
             100% { transform: translateY(-22px) scaleX(1.6); opacity: 0; }
         }
 
-        /* CONTENEDOR PRINCIPAL: CHAPA METALICA OSCURA, VENTANILLA DEL CARRO DE NOCHE */
         .ramada-container {
             max-width: 400px;
             width: 100%;
             background:
                 repeating-linear-gradient(100deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 5px),
                 linear-gradient(160deg, #2b2118 0%, #1c150f 100%);
-            padding: 18px 20px 20px 20px;
+            padding: 12px 20px 20px 20px;
             border-radius: 14px;
             box-shadow: 0 20px 45px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,204,0,0.12);
             border: 4px solid #ffcc00;
@@ -117,13 +116,12 @@
             z-index: 10;
         }
 
-        /* TARJETAS DE DATOS: ILUMINADAS COMO SI SE VIERAN DESDE FUERA DEL CARRO */
         .card {
             background: #fffdf7;
             border: 1px dashed #cbb488;
             border-left: 5px solid #b5001f;
-            padding: 8px 13px;
-            margin-bottom: 8px;
+            padding: 6px 13px;
+            margin-bottom: 6px;
             border-radius: 6px;
             text-align: left;
             box-shadow: 0 2px 6px rgba(0,0,0,0.3);
@@ -140,13 +138,13 @@
             font-weight: 700;
             color: #b5001f;
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 1px;
         }
 
         .valor {
             color: #1a0b01;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }
@@ -155,14 +153,14 @@
             background: #ffcc00;
             color: #1a0b01;
             border: 3px solid #1a0b01;
-            padding: 15px;
+            padding: 12px;
             font-family: 'Nunito', sans-serif;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 900;
             border-radius: 10px;
             cursor: pointer;
             width: 100%;
-            margin-top: 8px;
+            margin-top: 6px;
             box-shadow: 4px 4px 0px #1a0b01;
             transition: transform 0.12s ease, box-shadow 0.12s ease;
         }
@@ -177,6 +175,7 @@
             box-shadow: 1px 1px 0px #1a0b01;
         }
 
+        /* MENSAJE FLOTANTE ADAPTADO AL NUEVO HOTDOG CON LENTES */
         #mensaje-flotante {
             display: none;
             position: fixed;
@@ -185,30 +184,48 @@
             transform: translate(-50%, -50%);
             z-index: 1000;
             animation: aparecer 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-width: 90vw;
         }
 
-        .completo-flotante {
-            display: block;
-            width: 320px;
-            max-width: 85vw;
+        .flotante-wrapper {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .completo-flotante-img {
+            width: 230px;
             height: auto;
-            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.85));
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.85));
         }
 
-        .completo-texto {
+        .bocadillo {
+            position: absolute;
+            top: 30px;
+            left: -145px;
+            background: #fffdf7;
+            color: #1a0b01;
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 3px solid #1a0b01;
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 900;
+            white-space: nowrap;
+            box-shadow: 3px 3px 0px #1a0b01;
+            z-index: 10;
+        }
+
+        .bocadillo::after {
+            content: '';
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            text-align: center;
-            font-family: 'Nunito', sans-serif;
-            font-size: 19px;
-            font-weight: 900;
-            color: #fffdf7;
-            text-shadow: 2px 2px 0 #5a1400, -1px -1px 0 #5a1400, 1px -1px 0 #5a1400, -1px 1px 0 #5a1400;
-            line-height: 1.25;
+            right: -9px;
+            transform: translateY(-50%);
+            border-width: 6px 0 6px 9px;
+            border-style: solid;
+            border-color: transparent transparent transparent #1a0b01;
+            display: block;
+            width: 0;
         }
 
         @keyframes aparecer {
@@ -218,15 +235,21 @@
 
         .pie-foodtruck {
             text-align: center;
-            margin-top: 14px;
+            margin-top: 10px;
             font-family: 'Kalam', cursive;
-            font-size: 15px;
+            font-size: 14px;
             color: #8a6a2b;
             transform: rotate(-0.5deg);
         }
     </style>
 </head>
 <body>
+
+    <!-- CAJA DEL TÍTULO RESTAURADA -->
+    <div class="foodtruck-awning">
+        <span class="vapor-wrap">
+            <span class="vapor"></span><span class="vapor"></span><span class="vapor"></span>
+        </span>
         <div class="foodtruck-titulo">Donde la Gaby</div>
         <div class="foodtruck-subtitulo">🚚 datos pa' la transfe 🚚</div>
     </div>
@@ -264,23 +287,69 @@
         <div class="pie-foodtruck">✨ ¡los mejores bajones! ✨</div>
     </div>
 
-    <!-- MENSAJE FLOTANTE: EL COMPLETO ES TODO EL MENSAJE, CON EL TEXTO ENCIMA -->
+    <!-- MENSAJE FLOTANTE CON EL NUEVO HOTDOG -->
     <div id="mensaje-flotante">
-        <svg class="completo-flotante" viewBox="0 0 320 170" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="160" cy="150" rx="140" ry="12" fill="rgba(0,0,0,0.35)"/>
-            <path d="M20 100 Q160 145 300 100 L296 128 Q160 165 24 128 Z" fill="#d98f3d"/>
-            <rect x="34" y="82" width="252" height="34" rx="17" fill="#8f3820"/>
-            <rect x="34" y="82" width="252" height="14" rx="7" fill="#a5432b"/>
-            <path d="M40 78 Q100 58 160 78 Q100 70 40 78 Z" fill="#7a9a4a"/>
-            <path d="M150 80 Q215 56 280 80 Q215 72 150 80 Z" fill="#c62b2b"/>
-            <path d="M36 72 Q65 56 94 72 Q123 56 152 72 Q181 56 210 72 Q239 56 268 72 Q283 64 292 68"
-                  stroke="#fdf6e8" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <path d="M16 55 Q160 -10 304 55 Q160 40 16 55 Z" fill="#f0b45c"/>
-            <path d="M30 50 Q160 5 290 50" stroke="#d98f3d" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
-        </svg>
-        <div class="completo-texto">¡Datos copiados<br>exitosamente!</div>
+        <div class="flotante-wrapper">
+            <div class="bocadillo">¡Datos copiados exitosamente!</div>
+            <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function copiarDatos() {
+            const tarjetas = document.querySelectorAll('.valor');
+            if (tarjetas.length === 0) return;
+            const titular = tarjetas[0].innerText.trim();
+            const rut = tarjetas[1].innerText.trim();
+            const banco = tarjetas[2].innerText.trim();
+            const tipoCuenta = tarjetas[3].innerText.trim();
+            const nroCuenta = tarjetas[4].innerText.trim();
+            const correo = tarjetas[5].innerText.trim();
+            const textoACopiar =
+                `${titular}\n` +
+                `${rut}\n` +
+                `${banco}\n` +
+                `${tipoCuenta}\n` +
+                `${nroCuenta}\n` +
+                `${correo}`;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textoACopiar).then(() => {
+                    mostrarMensaje();
+                }).catch(err => {
+                    fallbackCopiarTexto(textoACopiar);
+                });
+            } else {
+                fallbackCopiarTexto(textoACopiar);
+            }
+        }
+
+        function fallbackCopiarTexto(texto) {
+            const textarea = document.createElement('textarea');
+            textarea.value = texto;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            try {
+                const success = document.execCommand('copy');
+                if (success) {
+                    mostrarMensaje();
+                }
+            } catch (err) {
+                console.error('Error al copiar', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function mostrarMensaje() {
+            const mensaje = document.getElementById('mensaje-flotante');
+            if (!mensaje) return;
+            mensaje.style.display = 'block';
+            setTimeout(() => {
+                mensaje.style.display = 'none';
+            }, 2500);
+        }
+    </script>
 </body>
 </html>
