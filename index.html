@@ -134,12 +134,13 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
+        /* TITULARES EN ROJO AGRANDADOS 2 PIXELES (15px) */
         .label {
             font-family: 'Kalam', cursive;
             font-weight: 700;
             color: #b5001f;
             display: block;
-            font-size: 13px;
+            font-size: 15px;
             margin-bottom: 1px;
         }
 
@@ -148,6 +149,11 @@
             font-size: 15px;
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
+        }
+
+        /* Estilo para anular enlaces automáticos de números telefónicos en móviles */
+        .no-tel {
+            unicode-bidi: embed;
         }
 
         button {
@@ -189,7 +195,7 @@
             z-index: 999;
         }
 
-        /* MENSAJE FLOTANTE */
+        /* MENSAJE FLOTANTE EN -90 */
         #mensaje-flotante {
             display: none;
             position: fixed;
@@ -310,7 +316,8 @@
         </div>
         <div class="card">
             <span class="label">Nro de Cuenta</span>
-            <div class="valor" x-ms-format-detection="none">1086877388</div>
+            <!-- Truco avanzado para evitar que iOS/Android detecten el número de cuenta como teléfono -->
+            <div class="valor" x-ms-format-detection="none"><span style="display:none;">-</span><span class="no-tel">1086877388</span></div>
         </div>
         <div class="card">
             <span class="label">Correo</span>
@@ -328,7 +335,8 @@
         <div class="flotante-animacion">
             <div class="flotante-wrapper">
                 <div class="bocadillo">¡Datos copiados exitosamente!</div>
-                <img src="hotdog.jpg" alt="Completo con lentes" class="completo-flotante-img">
+                <!-- IMAGEN CAMBIADA A .PNG -->
+                <img src="hotdog.png" alt="Completo con lentes" class="completo-flotante-img">
             </div>
         </div>
     </div>
@@ -341,7 +349,8 @@
             const rut = tarjetas[1].innerText.trim();
             const banco = tarjetas[2].innerText.trim();
             const tipoCuenta = tarjetas[3].innerText.trim();
-            const nroCuenta = tarjetas[4].innerText.trim();
+            // Limpiamos cualquier carácter extra del truco de protección anti-teléfono al copiar
+            const nroCuenta = tarjetas[4].innerText.replace(/-/g, '').trim();
             const correo = tarjetas[5].innerText.trim();
             const textoACopiar =
                 `${titular}\n` +
